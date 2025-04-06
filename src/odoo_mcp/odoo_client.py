@@ -73,10 +73,7 @@ class OdooClient:
 
         print(f"Connecting to Odoo at: {self.url}", file=os.sys.stderr)
         print(f"  Hostname: {self.hostname}", file=os.sys.stderr)
-        print(
-            f"  Timeout: {self.timeout}s, Verify SSL: {self.verify_ssl}",
-            file=os.sys.stderr,
-        )
+        print(f"  Timeout: {self.timeout}s, Verify SSL: {self.verify_ssl}", file=os.sys.stderr,)
 
         # Thiết lập endpoints
         self._common = xmlrpc.client.ServerProxy(
@@ -87,17 +84,9 @@ class OdooClient:
         )
 
         # Xác thực và lấy user ID
-        print(
-            f"Authenticating with database: {
-                self.db}, username: {self.username}",
-            file=os.sys.stderr,
-        )
+        print(f"Authenticating with database: {self.db}, username: {self.username}",file=os.sys.stderr,)
         try:
-            print(
-                f"Making request to {
-                    self.hostname}/xmlrpc/2/common (attempt 1)",
-                file=os.sys.stderr,
-            )
+            print(f"Making request to {self.hostname}/xmlrpc/2/common (attempt 1)",file=os.sys.stderr,)
             self.uid = self._common.authenticate(
                 self.db, self.username, self.password, {}
             )
